@@ -1,3 +1,6 @@
+from listByFunction import isEmpty
+
+
 class ArrayList:
 
     def __init__(self, capacity = 100):
@@ -19,7 +22,7 @@ class ArrayList:
             self.size += 1
 
         else:
-            print("Overflow or Invalid Position")
+            pass
 
 
     def delete(self, pos):
@@ -27,14 +30,22 @@ class ArrayList:
             e = self.array[pos]
             for i in range(pos, self.size-1):
                 self.array[i] = self.array[i+1]
-
             self.size -= 1
             return e
-        else: 
-            print("Underflow or Invalid Position")
+        else:pass
 
     def getEntry(self, pos):
         if 0 <= pos < self.size:
             return self.array[pos]
         else:
             return None
+
+    def replace(self, pos, e):
+        if not self.isEmpty() and 0 <= pos < self.size:
+            self.array[pos] = e
+
+        else:
+            print("Invalid Position or array is empty")
+
+    def __str__(self):
+        return str(self.array[0:self.size])
